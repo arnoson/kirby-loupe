@@ -1,0 +1,4 @@
+/vendor
+/kirby
+node_modules
+/.vscode/.*

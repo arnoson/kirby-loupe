@@ -1,0 +1,7 @@
+fields:
+  text:
+    type: writer
+  age:
+    type: number
+  interests:
+    type: tags

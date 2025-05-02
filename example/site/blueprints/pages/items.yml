@@ -1,0 +1,5 @@
+sections:
+  pages:
+    type: pages
+    status: all
+    template: item

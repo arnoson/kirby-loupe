@@ -1,0 +1,19 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 1rem;
+}
+
+
+.pagination {
+  justify-content: center;
+  gap: 1ch;
+
+  a[aria-current] {
+    text-decoration: underline;
+  }
+}
+
+.interests {
+  text-transform: capitalize;
+}

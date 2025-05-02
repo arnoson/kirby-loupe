@@ -1,0 +1,12 @@
+title: Site
+
+sections:
+  pages:
+    type: pages
+  fields:
+    type: fields
+    fields:
+      reindex:
+        type: janitor
+        command: 'janitor:job --key arnoson.kirby-loupe.commands.reindex'
+        label: Reindex Site

@@ -1,0 +1,46 @@
+{
+  "name": "arnoson/kirby-loupe",
+  "description": "Kirby Loupe",
+  "type": "plugin",
+  "keywords": [
+    "kirby",
+    "loupe",
+    "sqlite",
+    "search",
+    "filter",
+    "fizzy",
+    "index",
+    "php"
+  ],
+  "authors": [
+    {
+      "name": "Arno Schlipf"
+    }
+  ],
+  "homepage": "https://github.com/arnoson/kirby-loupe",
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+    "fakerphp/faker": "^1.24",
+    "getkirby/cms": "^4.7",
+    "loupe/loupe": "^0.10.3"
+  },
+  "require-dev": {
+    "getkirby/cli": "^1.6",
+    "bnomei/kirby3-janitor": "^5.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    },
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php -S localhost:8000 -t ./example kirby/router.php"
+    ]
+  },
+  "extra": {
+    "kirby-plugin-path": "example/site/plugins"
+  }
+}
