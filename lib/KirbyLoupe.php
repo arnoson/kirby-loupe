@@ -10,8 +10,6 @@ use Loupe\Loupe\Loupe;
 use Loupe\Loupe\LoupeFactory;
 use Loupe\Loupe\SearchParameters;
 
-require "KirbyLoupeCollection.php";
-
 class KirbyLoupe {
   static Loupe|null $loupe = null;
 

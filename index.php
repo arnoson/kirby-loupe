@@ -4,8 +4,6 @@ use arnoson\KirbyLoupe;
 use Kirby\Cms\App;
 use Kirby\Cms\Page;
 
-require "lib/KirbyLoupe.php";
-
 App::plugin("arnoson/kirby-loupe", [
   "options" => [
     "pages" => fn() => true,

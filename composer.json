@@ -1,6 +1,6 @@
 {
   "name": "arnoson/kirby-loupe",
-  "description": "Kirby Loupe",
+  "description": "Search Kirby with Loupe",
   "type": "plugin",
   "keywords": [
     "kirby",
@@ -8,7 +8,7 @@
     "sqlite",
     "search",
     "filter",
-    "fizzy",
+    "fuzzy",
     "index",
     "php"
   ],
@@ -18,21 +18,30 @@
     }
   ],
   "homepage": "https://github.com/arnoson/kirby-loupe",
+  "support": {
+    "docs": "https://github.com/arnoson/kirby-loupe/blob/main/README.md",
+    "source": "https://github.com/arnoson/kirby-loupe"
+  },
   "require": {
     "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-    "fakerphp/faker": "^1.24",
     "getkirby/cms": "^4.7",
     "loupe/loupe": "^0.10.3"
   },
   "require-dev": {
     "getkirby/cli": "^1.6",
-    "bnomei/kirby3-janitor": "^5.2"
+    "bnomei/kirby3-janitor": "^5.2",
+    "fakerphp/faker": "^1.24"
   },
   "config": {
     "allow-plugins": {
       "getkirby/composer-installer": true
     },
     "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "arnoson\\": "lib/"
+    }
   },
   "scripts": {
     "start": [
