@@ -9,8 +9,6 @@
 
 A thin wrapper around [loupe](https://github.com/loupe-php/loupe/), an SQLite based, PHP-only fulltext search engine.
 
-This plugin tries to be es minimalistic as possible, so your are mostly working with loupe directly. 
-
 ## Install
 
 ```bash
