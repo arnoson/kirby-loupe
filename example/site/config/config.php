@@ -2,60 +2,59 @@
 
 use arnoson\KirbyLoupe;
 use Kirby\Toolkit\Str;
-use Loupe\Loupe\Config\TypoTolerance;
-use Loupe\Loupe\Configuration;
 
 return [
-  'debug' => true,
-
-  'arnoson.kirby-loupe' => [
-    'configuration' => fn() => Configuration::create()
-      ->withTypoTolerance(TypoTolerance::create()->withFirstCharTypoCountsDouble(false))
-      ->withFilterableAttributes(['interests']),
-    'pages' => fn($page) => $page->intendedTemplate()->name() === 'item',
-    'fields' => [
-      'title',
-      'text' => fn($page) => strip_tags($page->text()),
-      'interests' => fn($page) => $page->interests()->split()
-    ]
+  "arnoson.kirby-loupe" => [
+    "pages" => fn($page) => $page->intendedTemplate()->name() === "item",
+    "fields" => [
+      "title",
+      "text" => fn($page) => strip_tags($page->text()),
+      "interests" => fn($page) => $page->interests()->split(),
+    ],
+    "searchable" => ["title", "text"],
+    "filterable" => ["interests"],
   ],
 
-  'routes' => [
+  "routes" => [
     [
-      'pattern' => '/seed/(:num)',
-      'action' => function($count) {
+      "pattern" => "/seed/(:num)",
+      "action" => function ($count) {
         set_time_limit(0);
-        
-        kirby()->impersonate('kirby');
 
-        page('items')?->delete(true);
-        $items = site()->createChild([
-          'slug' => 'items',
-          'template' => 'items'
-        ])->publish();
-                
+        kirby()->impersonate("kirby");
+
+        page("items")?->delete(true);
+        $items = site()
+          ->createChild([
+            "slug" => "items",
+            "template" => "items",
+          ])
+          ->publish();
+
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < $count; $i++) {
           $name = $faker->name();
-          $tagPool = ['technology', 'design', 'art', 'science', 'music', 'food', 'travel', 'sports', 'nature', 'business'];
-          $numTags = rand(1, 3);
-          $tags = array_rand(array_flip($tagPool), $numTags);
-          $tags = is_array($tags) ? $tags : [$tags];
-          $items->createChild([
-            'slug' => Str::slug($name . '-' . rand(1000, 9999)),
-            'template' => 'item',
-            'content' => [
-              'title' => $name,
-              'interests' => implode(', ', $tags),
-              'text' => $faker->text(400),
-            ]
-          ])->publish();
+          // prettier-ignore
+          $allInterests = ["technology", "design", "art", "science", "music", "food", "travel", "sports", "nature", "business"];
+          $interests = array_rand(array_flip($allInterests), rand(1, 3));
+          $interests = is_array($interests) ? $interests : [$interests];
+          $items
+            ->createChild([
+              "slug" => Str::slug($name . "-" . rand(1000, 9999)),
+              "template" => "item",
+              "content" => [
+                "title" => $name,
+                "interests" => implode(", ", $interests),
+                "text" => $faker->text(400),
+              ],
+            ])
+            ->publish();
         }
 
         KirbyLoupe::reindex();
 
         return "Seed created and indexed!";
-      }
-    ]
-  ]
+      },
+    ],
+  ],
 ];

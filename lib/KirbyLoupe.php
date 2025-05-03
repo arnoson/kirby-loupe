@@ -19,14 +19,28 @@ class KirbyLoupe {
     }
 
     $userConfig = option("arnoson.kirby-loupe.configuration");
-    $configuration = is_callable($userConfig)
+    /** @var Configuration */
+    $config = is_callable($userConfig)
       ? $userConfig()
       : Configuration::create();
 
-    $configuration = $configuration->withPrimaryKey("uuid");
+    $config = $config->withPrimaryKey("uuid");
+
+    if ($searchable = option("arnoson.kirby-loupe.searchable")) {
+      $config = $config->withSearchableAttributes($searchable);
+    }
+
+    if ($filterable = option("arnoson.kirby-loupe.filterable")) {
+      $config = $config->withFilterableAttributes($filterable);
+    }
+
+    if ($sortable = option("arnoson.kirby-loupe.sortable")) {
+      $config = $config->withSortableAttributes($sortable);
+    }
+
     return static::$loupe = (new LoupeFactory())->create(
       kirby()->root("cache") . "/kirby-loupe",
-      $configuration
+      $config
     );
   }
 
