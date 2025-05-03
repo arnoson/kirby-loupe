@@ -7,7 +7,9 @@ $query = param("query", "");
 $interest = param("interest", "");
 
 $startTime = microtime(true);
-$filter = $interest ? "interests = '$interest'" : null;
+$filter = $interest
+  ? "interests = " . KirbyLoupe::escapeFilterValue($interest)
+  : null;
 $results = KirbyLoupe::search($query, filter: $filter, pagination: 5);
 $searchTime = round((microtime(true) - $startTime) * 1000);
 ?>

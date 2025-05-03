@@ -132,4 +132,13 @@ class KirbyLoupe {
 
     return $params;
   }
+
+  /**
+   * An alias for Loupe\Loupe\SearchParameters::escapeFilterValue()
+   */
+  public static function escapeFilterValue(
+    string|int|float|bool $value
+  ): string {
+    return SearchParameters::escapeFilterValue($value);
+  }
 }
