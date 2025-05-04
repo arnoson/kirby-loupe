@@ -2,3 +2,4 @@
 /kirby
 node_modules
 /.vscode/.*
+.env

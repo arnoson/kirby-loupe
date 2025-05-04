@@ -19,9 +19,10 @@ return [
     [
       "pattern" => "/seed/(:num)",
       "action" => function ($count) {
+        if (!kirby()->user()) {
+          return;
+        }
         set_time_limit(0);
-
-        kirby()->impersonate("kirby");
 
         page("items")?->delete(true);
         $items = site()
