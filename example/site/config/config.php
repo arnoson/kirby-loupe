@@ -52,9 +52,7 @@ return [
             ->publish();
         }
 
-        KirbyLoupe::reindex();
-
-        return "Seed created and indexed!";
+        return "Seed created, make sure to index it in the panel!";
       },
     ],
   ],

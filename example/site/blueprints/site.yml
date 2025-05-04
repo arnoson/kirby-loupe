@@ -7,6 +7,5 @@ sections:
     type: fields
     fields:
       reindex:
-        type: janitor
-        command: 'janitor:job --key arnoson.kirby-loupe.commands.reindex'
-        label: Reindex Site
+        type: loupe-reindex
+        chunk: true

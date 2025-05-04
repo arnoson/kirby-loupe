@@ -65,6 +65,10 @@ class KirbyLoupe {
     return $count;
   }
 
+  public static function clearIndex() {
+    static::loupe()->deleteAllDocuments();
+  }
+
   public static function indexPage(Page $page) {
     $fields = option("arnoson.kirby-loupe.fields");
     $data = ["uuid" => $page->uuid()->toString()];

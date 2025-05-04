@@ -19,6 +19,11 @@ App::plugin("arnoson/kirby-loupe", [
       },
     ],
   ],
+
+  "fields" => [
+    "loupe-reindex" => [],
+  ],
+
   "hooks" => [
     "page.changeStatus:after" => function (Page $newPage, Page $oldPage) {
       if ($newPage->status() === "draft") {
@@ -40,5 +45,58 @@ App::plugin("arnoson/kirby-loupe", [
     "page.delete:before" => function (Page $page) {
       KirbyLoupe::loupe()->deleteDocument($page->uuid()->toString());
     },
+  ],
+
+  "api" => [
+    "routes" => [
+      [
+        "pattern" => "plugin-kirby-loupe/reindex-all",
+        "action" => fn() => ["count" => KirbyLoupe::reindex()],
+      ],
+      [
+        "pattern" => "plugin-kirby-loupe/reindex-chunk/start",
+        "action" => function () {
+          KirbyLoupe::clearIndex();
+          $uuids = [];
+          $pages = site()
+            ->index()
+            ->filterBy(fn($page) => KirbyLoupe::includePage($page));
+          foreach ($pages as $page) {
+            $uuids[] = $page->uuid()->toString();
+          }
+          return $uuids;
+        },
+      ],
+      [
+        "pattern" => "plugin-kirby-loupe/reindex-chunk",
+        "method" => "POST",
+        "action" => function () {
+          $uuids = kirby()->request()->data()["uuids"];
+          foreach ($uuids as $uuid) {
+            KirbyLoupe::indexPage(page($uuid));
+          }
+          return true;
+        },
+      ],
+    ],
+  ],
+
+  "translations" => [
+    "en" => [
+      "arnoson.kirby-loupe.reindex-site" => "Reindex Site",
+      "arnoson.kirby-loupe.success" => "Successfully reindexed {count} pages",
+      "arnoson.kirby-loupe.error" => "Indexing couldn't no be completed",
+      "arnoson.kirby-loupe.info-chunk-reindex" =>
+        "Please keep the browser tab open until the indexing is complete",
+    ],
+    "de" => [
+      "arnoson.kirby-loupe.reindex-site" => "Seite neu indizieren",
+      "arnoson.kirby-loupe.success" =>
+        "{count} Seiten erfolgreich neu indiziert",
+      "arnoson.kirby-loupe.error" =>
+        "Indizierung konnte nicht abgeschlossen werden",
+      "arnoson.kirby-loupe.info-chunk-reindex" =>
+        "Bis zum Abschluss der Indizierung bitte den Browser-Tab geöffnet lassen",
+    ],
   ],
 ]);
