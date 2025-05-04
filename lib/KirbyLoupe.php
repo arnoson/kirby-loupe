@@ -86,10 +86,10 @@ class KirbyLoupe {
     string|null $query = null,
     string|null $filter = null,
     array|null $sort = null,
-    array|int|null $pagination = null,
+    array|int|null $paginate = null,
     SearchParameters|null $searchParams = null
   ) {
-    $paginationParams = static::resolvePaginationParams($pagination);
+    $paginationParams = static::resolvePaginationParams($paginate);
     $paginationParams["page"] ??= 1;
 
     $searchParams ??= SearchParameters::create();
@@ -123,8 +123,8 @@ class KirbyLoupe {
    * We need to extract it since we have to get the current page before we know
    * the total amount.
    */
-  private static function resolvePaginationParams(array|int|null $pagination) {
-    $params = is_array($pagination) ? $pagination : ["limit" => $pagination];
+  private static function resolvePaginationParams(array|int|null $paginate) {
+    $params = is_array($paginate) ? $paginate : ["limit" => $paginate];
 
     $kirby = App::instance();
     $config = $kirby->option("pagination", []);
