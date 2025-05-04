@@ -95,18 +95,14 @@ fields:
     type: loupe-reindex
 ```
 
-<img src="./.github/reindex-field.png" width="400">
-
-As indexing large numbers of pages (thousands) can potentially break due to maximum execution time, especially on shared hosting, indexing via the Panel is done in chunks. The default is `100`, so 100 pages will be indexed at a time and a progress bar will be displayed.
-
-If you only have a small number of pages, or a good enough server, you can disable chunks and index all pages at once.
+As indexing large numbers of pages (thousands) can potentially break due to maximum execution time, especially on shared hosting, indexing via the Panel is done in chunks. The default is `100`, so 100 pages will be indexed at a time and a progress bar will be displayed. If you only have a small number of pages, or a good enough server, you can disable chunks and index all pages at once.
 
 ```yaml
 fields:
   reindex:
     type: loupe-reindex
-    chunk: false # disable completely
-    chunk: 500 # or increase the chunk size
+    chunk: false # disable chunks
+    chunk: 500 # or increase chunk size
 ```
 
 ## Pagination
@@ -118,11 +114,11 @@ The result has a pagination attached, so you can build your navigation, see the 
 <a href="<?= $results->pagination()->nextPageURL() ?>">›</a>
 ```
 
-This uses Kirby's native pagination class. You can pass advanced navigation options in the search functions:
+This uses Kirby's native pagination class. You can pass advanced navigation options in `search()`:
 
 ```php
 KirbyLoupe::search(
-  pagination: [
+  paginate: [
     'limit' => 50
     'method' => 'query',
     'variable' => 'p'
