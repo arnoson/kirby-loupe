@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.4",
+    "bumpp": "^10.1.0",
     "kirby-deploy": "^0.2.0",
     "kirbyup": "^3.3.0",
     "kirbyuse": "^0.11.3",
@@ -8,6 +9,7 @@
   },
   "scripts": {
     "dev": "kirbyup serve src/index.ts",
-    "build": "kirbyup src/index.ts"
+    "build": "kirbyup src/index.ts",
+    "release": "npm run build && git add . && git commit -m \"chore: build\" && bumpp composer.json"
   }
 }
