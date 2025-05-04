@@ -92,7 +92,6 @@ class KirbyLoupe {
 
     $searchParams = $searchParams
       ->withAttributesToRetrieve(["uuid"])
-      ->withQuery($query)
       ->withPage($paginationParams["page"])
       ->withHitsPerPage($paginationParams["limit"]);
 
