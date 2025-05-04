@@ -30,7 +30,6 @@
     "loupe/loupe": "^0.10.3"
   },
   "require-dev": {
-    "getkirby/cli": "^1.6",
     "fakerphp/faker": "^1.24"
   },
   "config": {
