@@ -1,7 +1,9 @@
 {
   "name": "arnoson/kirby-loupe",
   "description": "Search Kirby with Loupe",
-  "type": "plugin",
+  "type": "kirby-plugin",
+  "version": "0.0.0",
+  "license": "MIT",
   "keywords": [
     "kirby",
     "loupe",
@@ -29,7 +31,6 @@
   },
   "require-dev": {
     "getkirby/cli": "^1.6",
-    "bnomei/kirby3-janitor": "^5.2",
     "fakerphp/faker": "^1.24"
   },
   "config": {
