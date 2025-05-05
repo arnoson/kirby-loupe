@@ -7,7 +7,7 @@
 
 <h1 align="center">Kirby Loupe</h1>
 
-A thin wrapper around [loupe](https://github.com/loupe-php/loupe/), an SQLite based, PHP-only fulltext search engine.
+A thin wrapper around [Loupe](https://github.com/loupe-php/loupe/), an SQLite based, PHP-only fulltext search engine.
 
 ## Install
 
