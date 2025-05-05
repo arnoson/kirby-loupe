@@ -26,19 +26,13 @@
   },
   "require": {
     "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-    "getkirby/cms": "^4.7",
-    "loupe/loupe": "dev-chore/sqlite-optimization-order",
-    "getkirby/composer-installer": "^1.2"
+    "getkirby/composer-installer": "^1.2",
+    "loupe/loupe": "^0.10.3"
   },
   "require-dev": {
+    "getkirby/cms": "^4.7",
     "fakerphp/faker": "^1.24"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/daun/loupe/"
-    }
-  ],
   "config": {
     "allow-plugins": {
       "getkirby/composer-installer": true

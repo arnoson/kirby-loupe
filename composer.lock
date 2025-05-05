@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86ac3a8ea418a9574f41d1666688b3ce",
+    "content-hash": "8709bb0c8adb6b325b39539dbd61c731",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -775,11 +775,17 @@
         },
         {
             "name": "loupe/loupe",
-            "version": "dev-chore/sqlite-optimization-order",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/daun/loupe/",
-                "reference": "5578a06d3c8ad2f007c016ed773f730239cd92ed"
+                "url": "https://github.com/loupe-php/loupe.git",
+                "reference": "f59b1bc1f3caea29510d20c812fb9dd47105b325"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/loupe-php/loupe/zipball/f59b1bc1f3caea29510d20c812fb9dd47105b325",
+                "reference": "f59b1bc1f3caea29510d20c812fb9dd47105b325",
+                "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^3.9 || ^4.0",
@@ -807,31 +813,7 @@
                     "Loupe\\Loupe\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Loupe\\Loupe\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "tests": [
-                    "@php vendor/bin/phpunit"
-                ],
-                "unit-tests": [
-                    "@php vendor/bin/phpunit --testsuite=unit"
-                ],
-                "functional-tests": [
-                    "@php vendor/bin/phpunit --testsuite=functional"
-                ],
-                "cs-fixer": [
-                    "@php vendor/bin/ecs check --fix"
-                ],
-                "ci-cs-fixer": [
-                    "@php vendor/bin/ecs check"
-                ],
-                "phpstan": [
-                    "@php vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -842,7 +824,17 @@
                 }
             ],
             "description": "A full text search engine with tokenization, stemming, typo tolerance, filters and geo support based on only PHP and SQLite",
-            "time": "2025-05-04T15:52:41+00:00"
+            "support": {
+                "issues": "https://github.com/loupe-php/loupe/issues",
+                "source": "https://github.com/loupe-php/loupe/tree/0.10.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Toflar",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-03-25T15:37:50+00:00"
         },
         {
             "name": "michelf/php-smartypants",
@@ -2225,9 +2217,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "loupe/loupe": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
