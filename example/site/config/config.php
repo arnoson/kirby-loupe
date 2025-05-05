@@ -1,6 +1,7 @@
 <?php
 
 use arnoson\KirbyLoupe;
+use Kirby\Filesystem\Dir;
 use Kirby\Toolkit\Str;
 
 return [
@@ -24,6 +25,9 @@ return [
         }
         set_time_limit(0);
 
+        if (page("items")) {
+          Dir::remove(page("items")->root());
+        }
         page("items")?->delete(true);
         $items = site()
           ->createChild([
