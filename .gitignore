@@ -1,5 +1,6 @@
 /vendor
 /kirby
 node_modules
-/.vscode/.*
+/.vscode/*
+!/.vscode/settings.json
 .env
