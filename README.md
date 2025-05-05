@@ -9,6 +9,14 @@
 
 A thin wrapper around [Loupe](https://github.com/loupe-php/loupe/), an SQLite based, PHP-only fulltext search engine.
 
+## Key Features
+
+- 🎯 Typo tolerant / fuzzy search
+- 🔍 Filtering and sorting
+- 📄 Built-in pagination
+- 🌍 Works everywhere, no SQLite extensions needed
+- ⚡ Decent performance (~100ms for 5000 documents, ~300ms on low-end shared hosting)
+
 ## Install
 
 ```bash
