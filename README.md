@@ -43,10 +43,10 @@ $results = KirbyLoupe::search(
   filter: "interests = 'music'",
 
   // See https://github.com/loupe-php/loupe/blob/main/docs/searching.md#sort
-  sort: ["title:asc"]
+  sort: ["title:asc"],
 
   // Loupe always paginates the results, default is 20.
-  paginate: 100,
+  paginate: 100
 );
 
 foreach ($results as $result) {
@@ -69,14 +69,14 @@ foreach ($results as $result) {
         'text' => fn($page) => strip_tags($page->text()),
         // loupe also supports so called multi fields (arrays) allowing you to
         // do advanced filtering.
-        'interests' => fn($page) => $page->interests()->split()
+        'interests' => fn($page) => $page->interests()->split(),
     ],
 
     // Which fields to include in the text search, default is all fields.
     'searchable' => ['title', 'text'],
 
     // Which fields to include in the filtering.
-    'filterable' => ['interests']
+    'filterable' => ['interests'],
 
     // Which fields to include in the sorting.
     'sortable' => ['title'],
@@ -127,9 +127,9 @@ This uses Kirby's native pagination class. You can pass advanced navigation opti
 ```php
 KirbyLoupe::search(
   paginate: [
-    'limit' => 50
-    'method' => 'query',
-    'variable' => 'p'
+    "limit" => 50,
+    "method" => "query",
+    "variable" => "p",
   ]
 );
 // This will use 50 results per page and URLs in the format example.com/?p=10
