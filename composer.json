@@ -2,7 +2,7 @@
   "name": "arnoson/kirby-loupe",
   "description": "Search Kirby with Loupe",
   "type": "kirby-plugin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "keywords": [
     "kirby",
