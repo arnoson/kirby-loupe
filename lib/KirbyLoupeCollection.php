@@ -3,19 +3,38 @@
 namespace arnoson;
 
 use Kirby\Cms\Collection;
+use Kirby\Cms\Page;
 use Kirby\Cms\Pagination;
 use Loupe\Loupe\SearchResult;
 
 class KirbyLoupeCollection extends Collection {
+  private array $hitsByUuid = [];
+
   public function __construct(protected SearchResult $searchResult) {
     parent::__construct();
     foreach ($searchResult->getHits() as $hit) {
-      $this->append(page($hit["uuid"]));
+      $uuid = $hit["uuid"];
+      $this->hitsByUuid[$uuid] = $hit;
+      $this->append(page($uuid));
     }
   }
 
   public function searchResult() {
     return $this->searchResult;
+  }
+
+  /**
+   * Get the raw search hit from Loupe for the specified page.
+   */
+  public function hit(Page $page) {
+    return $this->hitsByUuid[$page->uuid()->toString()];
+  }
+
+  /**
+   * Get the formatted attributes from Loupe for the specified page.
+   */
+  public function formatted(Page $page) {
+    return $this->hitsByUuid[$page->uuid()->toString()];
   }
 
   public function paginate(...$arguments) {
