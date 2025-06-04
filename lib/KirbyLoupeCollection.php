@@ -34,7 +34,7 @@ class KirbyLoupeCollection extends Collection {
    * Get the formatted attributes from Loupe for the specified page.
    */
   public function formatted(Page $page) {
-    return $this->hitsByUuid[$page->uuid()->toString()];
+    return $this->hit($page)["_formatted"];
   }
 
   public function paginate(...$arguments) {
