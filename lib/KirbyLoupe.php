@@ -5,6 +5,7 @@ namespace arnoson;
 use Kirby\Cms\App;
 use Kirby\Cms\Page;
 use Kirby\Http\Uri;
+use Kirby\Toolkit\A;
 use Loupe\Loupe\Configuration;
 use Loupe\Loupe\Loupe;
 use Loupe\Loupe\LoupeFactory;
@@ -94,8 +95,19 @@ class KirbyLoupe {
 
     $searchParams ??= SearchParameters::create();
 
+    $attributesToRetrieve = [
+      "uuid",
+      // When retrieveAttributes is empty, Loupe returns '*' (all fields).
+      // This makes it impossible to distinguish between no additional
+      // attributes being set and '*' being explicitly requested.
+      ...A::filter(
+        $searchParams->getAttributesToRetrieve(),
+        fn($attribute) => $attribute !== "*"
+      ),
+    ];
+
     $searchParams = $searchParams
-      ->withAttributesToRetrieve(["uuid"])
+      ->withAttributesToRetrieve($attributesToRetrieve)
       ->withPage($paginationParams["page"])
       ->withHitsPerPage($paginationParams["limit"]);
 
