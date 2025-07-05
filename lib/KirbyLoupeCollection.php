@@ -37,7 +37,7 @@ class KirbyLoupeCollection extends Collection {
     return $this->hit($page)["_formatted"];
   }
 
-  public function paginate(...$arguments) {
+  public function paginate(...$arguments): static {
     // The original Collection class uses Pagination::for() which will
     // automatically set the total parameter based on the collection length
     // which we don't want, so we create new Pagination instance manually.
