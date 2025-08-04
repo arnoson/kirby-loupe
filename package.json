@@ -1,11 +1,11 @@
 {
   "devDependencies": {
-    "@prettier/plugin-php": "^0.22.4",
-    "bumpp": "^10.1.0",
+    "@prettier/plugin-php": "^0.24.0",
+    "bumpp": "^10.2.2",
     "kirby-deploy": "^0.2.0",
     "kirbyup": "^3.3.0",
-    "kirbyuse": "^0.11.3",
-    "prettier": "^3.5.3"
+    "kirbyuse": "^0.12.1",
+    "prettier": "^3.6.2"
   },
   "scripts": {
     "dev": "kirbyup serve src/index.ts",
