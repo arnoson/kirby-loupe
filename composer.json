@@ -2,7 +2,7 @@
   "name": "arnoson/kirby-loupe",
   "description": "Search Kirby with Loupe",
   "type": "kirby-plugin",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "license": "MIT",
   "keywords": [
     "kirby",
@@ -30,7 +30,7 @@
     "loupe/loupe": "^0.12.0"
   },
   "require-dev": {
-    "getkirby/cms": "^4.7",
+    "getkirby/cms": "^5.0",
     "fakerphp/faker": "^1.24"
   },
   "config": {
