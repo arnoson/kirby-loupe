@@ -55,13 +55,15 @@ $searchTime = round((microtime(true) - $startTime) * 1000);
       <p><i>Search took <?= $searchTime ?>ms</i></p>
 
       <!-- Results -->
-      <?php foreach ($results as $result): ?>
+      <?php foreach ($results as $result):
+        $page = page($result["uuid"]); ?>
       <article>
-        <h2><?= $result->title() ?></h2>
-        <p><?= $result->text() ?></p>
-        <p class="interests">Interests: <?= $result->interests() ?></p>
+        <h2><?= $page->title() ?></h2>
+        <p><?= $page->text() ?></p>
+        <p class="interests">Interests: <?= $page->interests() ?></p>
       </article>  
-      <?php endforeach; ?>
+      <?php
+      endforeach; ?>
 
       <!-- Pagination -->
       <?php $pagination = $results->pagination(); ?>
