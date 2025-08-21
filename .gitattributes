@@ -13,6 +13,7 @@ package.json export-ignore
 package-lock.json export-ignore
 vite.config.ts export-ignore
 kirbyup.config.ts export-ignore
+kirby-deploy.config.ts export-ignore
 
 # Development folders
 /example export-ignore
