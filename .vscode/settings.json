@@ -1,5 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "intelephense.environment.phpVersion": "8.3"
+  "intelephense.environment.phpVersion": "8.5"
 }
