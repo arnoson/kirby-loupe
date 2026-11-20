@@ -27,12 +27,7 @@ composer require arnoson/kirby-loupe
 
 ## Usage
 
-You have to index your existing content once. After the initial indexing the index will be updated automatically via Kirby's page hooks.
-
-```php
-// Call this once or use the panel field (see #reindex)
-arnoson\KirbyLoupe::reindex();
-```
+You have to [index](#reindex) your existing content once. After the initial indexing the index will be updated automatically via Kirby's page hooks.
 
 ```php
 // Inside your template/controller.
