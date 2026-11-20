@@ -67,6 +67,9 @@ $searchTime = round((microtime(true) - $startTime) * 1000);
 
       <!-- Pagination -->
       <?php $pagination = $results->pagination(); ?>
+      <?php if ($results->count() === 0): ?>
+      <p>No results found.</p>
+      <?php elseif ($pagination->pages() > 1): ?>
       <nav class="pagination">
         <ul>
           <!-- Prev -->
@@ -93,6 +96,7 @@ $searchTime = round((microtime(true) - $startTime) * 1000);
           <?php endif; ?>
         </ul>
       </nav>
+      <?php endif; ?>
     </div>
   </main>
 </body>
