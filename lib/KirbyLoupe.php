@@ -6,6 +6,7 @@ use Kirby\Cms\App;
 use Kirby\Cms\Page;
 use Kirby\Http\Uri;
 use Kirby\Toolkit\A;
+use Kirby\Toolkit\Pagination;
 use Loupe\Loupe\Configuration;
 use Loupe\Loupe\Loupe;
 use Loupe\Loupe\LoupeFactory;
@@ -93,6 +94,11 @@ class KirbyLoupe {
     $paginationParams = static::resolvePaginationParams($paginate);
     $paginationParams["page"] ??= 1;
 
+    // The requested page may come straight from the URL. Loupe needs a valid
+    // integer; Kirby's Pagination is left to validate the original value.
+    $requestedPage = $paginationParams["page"];
+    $searchPage = is_numeric($requestedPage) ? max(1, (int) $requestedPage) : 1;
+
     $searchParams ??= SearchParameters::create();
 
     $attributesToRetrieve = [
@@ -108,7 +114,6 @@ class KirbyLoupe {
 
     $searchParams = $searchParams
       ->withAttributesToRetrieve($attributesToRetrieve)
-      ->withPage($paginationParams["page"])
       ->withHitsPerPage($paginationParams["limit"]);
 
     if ($query) {
@@ -123,7 +128,32 @@ class KirbyLoupe {
       $searchParams = $searchParams->withSort($sort);
     }
 
-    $result = static::loupe()->search($searchParams);
+    $runSearch = fn(int $page) => static::loupe()->search(
+      $searchParams->withPage($page)
+    );
+
+    $result = $runSearch($searchPage);
+
+    // The total is only known after the search. A page within range always has
+    // hits, so an empty result for a page > 1 means the page is out of range.
+    // Loupe reports a total of 0 in that case, so query the first page to get
+    // the real total (this only happens for out-of-range requests).
+    if ($searchPage > 1 && count($result->getHits()) === 0) {
+      $result = $runSearch(1);
+      $lastPage = max(1, $result->getTotalPages());
+
+      if (!Pagination::$validate) {
+        // Kirby is configured to clamp instead of throwing: show the last
+        // valid page so hits and pagination match.
+        if ($lastPage > 1) {
+          $result = $runSearch($lastPage);
+        }
+        $paginationParams["page"] = $lastPage;
+      }
+      // Otherwise keep the requested page so Kirby's Pagination throws the
+      // usual error page (with correct bounds), like native collections.
+    }
+
     $pages = new KirbyLoupeCollection($result);
     $paginationParams["total"] = $result->getTotalHits();
 
