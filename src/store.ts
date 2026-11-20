@@ -1,4 +1,4 @@
-import { reactive } from "kirbyuse"
+import { reactive } from "vue"
 
 export default reactive({
   state: "idle" as "idle" | "index" | "index-chunks" | "success" | "error",
