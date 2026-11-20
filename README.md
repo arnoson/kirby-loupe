@@ -19,6 +19,8 @@ A thin wrapper around [Loupe](https://github.com/loupe-php/loupe/), an SQLite ba
 
 ## Install
 
+Make sure you have `pdo_sqlite` available and your installed SQLite version is at least `3.35.0`. Then run:
+
 ```bash
 composer require arnoson/kirby-loupe
 ```
@@ -46,7 +48,7 @@ $results = KirbyLoupe::search(
   sort: ["title:asc"],
 
   // Loupe always paginates the results, default is 20.
-  paginate: 100
+  paginate: 100,
 );
 
 foreach ($results as $result) {
@@ -130,7 +132,7 @@ KirbyLoupe::search(
     "limit" => 50,
     "method" => "query",
     "variable" => "p",
-  ]
+  ],
 );
 // This will use 50 results per page and URLs in the format example.com/?p=10
 ```
