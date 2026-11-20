@@ -91,10 +91,12 @@ foreach ($results as $result) {
 
 ## Reindex
 
-This plugin will automatically update Loupe's search index via page hooks. But for your initial content, or after you have manually uploaded content, you will need to index your site explicitly. To do so either call
+This plugin will automatically update Loupe's search index via page hooks. But for your initial content, or after you have manually uploaded content, you will need to index your site explicitly. To do so you can:
 
-```php
-KirbyLoupe::reindex();
+Use the [Kirby CLI](https://github.com/getkirby/cli)
+
+```sh
+kirby loupe:reindex
 ```
 
 Or use the panel field

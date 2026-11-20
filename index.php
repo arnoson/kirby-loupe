@@ -20,6 +20,18 @@ App::plugin("arnoson/kirby-loupe", [
     ],
   ],
 
+  "commands" => [
+    "loupe:reindex" => [
+      "description" => "Reindexes all pages for Kirby Loupe",
+      "command" => static function ($cli): void {
+        $count = KirbyLoupe::reindex();
+        $cli->success(
+          $count === 1 ? "Reindexed 1 page" : "Reindexed $count pages",
+        );
+      },
+    ],
+  ],
+
   "fields" => [
     "loupe-reindex" => [],
   ],
