@@ -1,9 +1,9 @@
 {
   "name": "kirby-loupe",
   "devDependencies": {
-    "@prettier/plugin-php": "^0.24.0",
+    "@prettier/plugin-php": "^0.26.0",
     "bumpp": "^10.2.2",
-    "kirby-deploy": "^0.3.0",
+    "kirby-deploy": "^0.4.0",
     "kirbyup": "^3.3.0",
     "kirbyuse": "^1.3.0",
     "prettier": "^3.6.2"
