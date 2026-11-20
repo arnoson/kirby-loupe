@@ -1,6 +1,7 @@
 <?php
 
 use arnoson\KirbyLoupe;
+use arnoson\LoupeReindexField;
 use Kirby\Cms\App;
 use Kirby\Cms\Page;
 
@@ -33,7 +34,7 @@ App::plugin("arnoson/kirby-loupe", [
   ],
 
   "fields" => [
-    "loupe-reindex" => [],
+    "loupe-reindex" => LoupeReindexField::class,
   ],
 
   "hooks" => [
