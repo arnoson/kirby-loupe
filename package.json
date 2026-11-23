@@ -1,5 +1,6 @@
 {
   "name": "kirby-loupe",
+  "type": "module",
   "devDependencies": {
     "@prettier/plugin-php": "^0.26.0",
     "bumpp": "^10.2.2",
