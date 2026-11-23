@@ -1,1 +1,1 @@
-.loupe-reindex-field[data-v-3ceecd0b]{align-items:start;gap:var(--spacing-2);flex-direction:column;display:flex}.loupe-reindex-field[data-state=indexing] button[data-v-3ceecd0b]{cursor:wait}
+.loupe-reindex-field{&[data-v-317663b0]{align-items:start;gap:var(--spacing-2);flex-direction:column;display:flex}& .k-progress[data-v-317663b0]{width:100%}}.loupe-reindex-field[data-state=indexing] button[data-v-317663b0]{cursor:wait}
