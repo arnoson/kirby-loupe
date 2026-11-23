@@ -72,7 +72,12 @@ const reindexChunked = async () => {
   store.state = "index-chunks"
   store.progress = 1 // Show immediate feedback that process started
 
-  const uuids = await api.get("/plugin-kirby-loupe/reindex-chunk/start")
+  const uuids = await api.get(
+    "/plugin-kirby-loupe/reindex-chunk/start",
+    undefined,
+    undefined,
+    true,
+  )
   store.count = uuids.length
 
   const chunkSize = typeof props.chunk === "number" ? props.chunk : 100
@@ -81,12 +86,18 @@ const reindexChunked = async () => {
   for (let i = 0; i < chunksCount; i++) {
     const chunk = uuids.slice(i * chunkSize, (i + 1) * chunkSize)
     try {
-      await api.post("/plugin-kirby-loupe/reindex-chunk", { uuids: chunk })
+      await api.post(
+        "/plugin-kirby-loupe/reindex-chunk",
+        { uuids: chunk },
+        undefined,
+        undefined,
+        true,
+      )
     } catch (e) {
       store.error = e
       break
     }
-    store.progress = 1 + (i / (chunksCount - 1)) * 99 // Progress started at 1.
+    store.progress = 1 + ((i + 1) / chunksCount) * 99 // Progress started at 1.
   }
 
   store.state = store.error ? "error" : "success"
@@ -100,6 +111,10 @@ const reindexChunked = async () => {
   flex-direction: column;
   align-items: start;
   gap: var(--spacing-2);
+
+  .k-progress {
+    width: 100%;
+  }
 }
 
 .loupe-reindex-field[data-state="indexing"] button {
