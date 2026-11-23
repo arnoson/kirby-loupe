@@ -2,7 +2,7 @@
   "name": "arnoson/kirby-loupe",
   "description": "Search Kirby with Loupe",
   "type": "kirby-plugin",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.1",
   "license": "MIT",
   "keywords": [
     "kirby",
@@ -27,7 +27,7 @@
   "require": {
     "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
     "getkirby/composer-installer": "^1.2",
-    "loupe/loupe": "^1.0.0"
+    "loupe/loupe": "^2.0.0-beta.1"
   },
   "require-dev": {
     "getkirby/cms": "^6.0.0-rc.3",
