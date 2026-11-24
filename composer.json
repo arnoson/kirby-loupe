@@ -30,7 +30,7 @@
     "loupe/loupe": "^1.0.0"
   },
   "require-dev": {
-    "getkirby/cms": "^6.0.0-rc.3",
+    "getkirby/cms": "^6.0.0",
     "fakerphp/faker": "^1.24"
   },
   "config": {
