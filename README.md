@@ -15,7 +15,14 @@ A thin wrapper around [Loupe](https://github.com/loupe-php/loupe/), an SQLite ba
 - 🔍 Filtering and sorting
 - 📄 Built-in pagination
 - 🌍 Works everywhere, no SQLite extensions needed
-- ⚡ Decent performance (~100ms for 5000 documents, ~300ms on low-end shared hosting)
+- ⚡ Very fast
+
+## Compatibility
+
+| Kirby Loupe | Kirby   |
+| ----------- | ------- |
+| `^2.0`      | 6       |
+| `<= 1.x`    | 4 and 5 |
 
 ## Install
 
