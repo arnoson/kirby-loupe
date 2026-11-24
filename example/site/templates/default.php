@@ -21,7 +21,7 @@ $searchTime = round((microtime(true) - $startTime) * 1000);
 
     <?php if (!page("items")): ?>
     <p>
-      To use this demo first <a href="/seed/1000">create some dummy data</a> (This might take while)
+      To use this demo first create some dummy data by running <code>kirby seed 1000</code> in the <code>example</code> folder (this might take a while).
     </p>
     <?php return; ?>
     <?php endif; ?>
