@@ -3,6 +3,7 @@
   "type": "module",
   "devDependencies": {
     "@prettier/plugin-php": "^0.26.0",
+    "@types/node": "^26.6.6",
     "bumpp": "^10.2.2",
     "kirby-deploy": "^0.4.0",
     "kirbyup": "^4.0.0-beta.2",
