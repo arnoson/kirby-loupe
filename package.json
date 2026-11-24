@@ -13,6 +13,6 @@
   "scripts": {
     "dev": "kirbyup serve src/index.ts",
     "build": "kirbyup src/index.ts",
-    "release": "npm run build && bumpp composer.json"
+    "release": "npm run build && bumpp"
   }
 }
